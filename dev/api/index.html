@@ -9,14 +9,26 @@
 ├───┤
 │   │
 └───┘</code></pre><pre><code class="language-julia-repl hljs">julia&gt; arm([4, 3, 1, 1], 2, 1)
-2</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bowenszhu/MOPS.jl/blob/92b0462fb6041914bc3a64e05ec1520fc89fe56b/src/partition.jl#L23">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="MOPS.par-Tuple{Integer}" href="#MOPS.par-Tuple{Integer}"><code>MOPS.par</code></a> — <span class="docstring-category">Method</span></header><section><div><pre><code class="language-julia hljs">par(k::Integer) -&gt; Vector{Vector{Int64}}
+2</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bowenszhu/MOPS.jl/blob/2de34be73aa240b938605c36530c8dea9decedaa/src/partition.jl#L23">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="MOPS.conjugate-Union{Tuple{AbstractVector{T}}, Tuple{T}} where T" href="#MOPS.conjugate-Union{Tuple{AbstractVector{T}}, Tuple{T}} where T"><code>MOPS.conjugate</code></a> — <span class="docstring-category">Method</span></header><section><div><pre><code class="language-julia hljs">conjugate(κ::AbstractArray{T, 1}) -&gt; Any
+</code></pre><p>Return the conjugate partition.</p><p><strong>Examples</strong></p><pre><code class="language-julia hljs">┌───┬───┬───┬───┐         ┌───┬───┬───┬───┬───┐
+│   │   │   │   │         │   │   │   │   │   │
+├───┼───┼───┼───┘         ├───┼───┼───┼───┼───┘
+│   │   │   │             │   │   │   │   │
+├───┼───┼───┘        ➔    ├───┼───┼───┴───┘
+│   │   │                 │   │   │
+├───┼───┤                 ├───┼───┘
+│   │   │                 │   │
+├───┼───┘                 └───┘
+│   │
+└───┘</code></pre><pre><code class="language-julia-repl hljs">julia&gt; conjugate([4, 3, 2, 2, 1]) |&gt; println
+[5, 4, 2, 1]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bowenszhu/MOPS.jl/blob/2de34be73aa240b938605c36530c8dea9decedaa/src/partition.jl#L76">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="MOPS.par-Tuple{Integer}" href="#MOPS.par-Tuple{Integer}"><code>MOPS.par</code></a> — <span class="docstring-category">Method</span></header><section><div><pre><code class="language-julia hljs">par(k::Integer) -&gt; Vector{Vector{Int64}}
 </code></pre><p>Given a positive integer <code>k</code>, produce a list of all partitions which sum up to <code>k</code>.</p><p><strong>Examples</strong></p><pre><code class="language-julia-repl hljs">julia&gt; par(4)
 5-element Vector{Vector{Int64}}:
  [4]
  [3, 1]
  [2, 2]
  [2, 1, 1]
- [1, 1, 1, 1]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bowenszhu/MOPS.jl/blob/92b0462fb6041914bc3a64e05ec1520fc89fe56b/src/partition.jl#L3">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="MOPS.parvalid-Tuple{AbstractVector}" href="#MOPS.parvalid-Tuple{AbstractVector}"><code>MOPS.parvalid</code></a> — <span class="docstring-category">Method</span></header><section><div><pre><code class="language-julia hljs">parvalid(κ::AbstractVector) -&gt; Bool
+ [1, 1, 1, 1]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bowenszhu/MOPS.jl/blob/2de34be73aa240b938605c36530c8dea9decedaa/src/partition.jl#L3">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="MOPS.parvalid-Tuple{AbstractVector}" href="#MOPS.parvalid-Tuple{AbstractVector}"><code>MOPS.parvalid</code></a> — <span class="docstring-category">Method</span></header><section><div><pre><code class="language-julia hljs">parvalid(κ::AbstractVector) -&gt; Bool
 </code></pre><p>Check if the given partition is valid.</p><p>A partition <span>$\kappa$</span> is a finite, ordered, non-increasing sequence of positive integers <span>$\kappa_1\geq\kappa_1\geq\kappa_1\geq\ldots\geq\kappa_l$</span>.</p><p><strong>Examples</strong></p><pre><code class="language-julia-repl hljs">julia&gt; parvalid(Int[])
 true
 
@@ -24,4 +36,4 @@ julia&gt; parvalid([4, 3, 1, 1])
 true
 
 julia&gt; parvalid([5, 3, 4])
-false</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bowenszhu/MOPS.jl/blob/92b0462fb6041914bc3a64e05ec1520fc89fe56b/src/partition.jl#L52">source</a></section></article></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../">« Home</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.23 on <span class="colophon-date" title="Wednesday 19 October 2022 06:17">Wednesday 19 October 2022</span>. Using Julia version 1.8.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+false</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/bowenszhu/MOPS.jl/blob/2de34be73aa240b938605c36530c8dea9decedaa/src/partition.jl#L52">source</a></section></article></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../">« Home</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.23 on <span class="colophon-date" title="Wednesday 19 October 2022 07:28">Wednesday 19 October 2022</span>. Using Julia version 1.8.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
