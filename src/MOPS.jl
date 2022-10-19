@@ -3,6 +3,6 @@ module MOPS
 using DocStringExtensions
 
 include("partition.jl")
-export par
+export par, arm
 
 end # module MOPS
