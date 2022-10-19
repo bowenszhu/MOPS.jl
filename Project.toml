@@ -4,8 +4,10 @@ authors = ["Bowen S. Zhu <bszhu@fas.harvard.edu>"]
 version = "0.1.0"
 
 [deps]
+Combinatorics = "861a8166-3701-5b0c-9a16-15d98fcdc6aa"
 DocStringExtensions = "ffbed154-4ef7-542d-bbb7-c09d3a79fcae"
 
 [compat]
+Combinatorics = "1.0"
 DocStringExtensions = "0.9"
 julia = "1.6"
