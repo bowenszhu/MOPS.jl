@@ -1,3 +1,3 @@
 var documenterSearchIndex = {"docs":
-[{"location":"#SymbolicMultivariateOrthogonalPolynomials.jl","page":"Home","title":"SymbolicMultivariateOrthogonalPolynomials.jl","text":"","category":"section"}]
+[{"location":"#MOPS.jl","page":"Home","title":"MOPS.jl","text":"","category":"section"}]
 }
