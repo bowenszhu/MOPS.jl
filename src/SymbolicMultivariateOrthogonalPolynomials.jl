@@ -1,5 +1,5 @@
 module SymbolicMultivariateOrthogonalPolynomials
 
-greet() = print("Hello World!")
+using DocStringExtensions
 
 end # module SymbolicMultivariateOrthogonalPolynomials

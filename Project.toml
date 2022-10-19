@@ -3,5 +3,9 @@ uuid = "5952859f-f961-4eab-a85d-0fab7a00bdad"
 authors = ["Bowen S. Zhu <bszhu@fas.harvard.edu>"]
 version = "0.1.0"
 
+[deps]
+DocStringExtensions = "ffbed154-4ef7-542d-bbb7-c09d3a79fcae"
+
 [compat]
+DocStringExtensions = "0.9"
 julia = "1.6"
