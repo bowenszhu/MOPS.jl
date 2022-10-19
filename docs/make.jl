@@ -1,8 +1,8 @@
-using Documenter, SymbolicMultivariateOrthogonalPolynomials
+using Documenter, MOPS
 
-makedocs(sitename = "SymbolicMultivariateOrthogonalPolynomials.jl",
+makedocs(sitename = "MOPS.jl",
          pages = [
              "Home" => "index.md",
          ])
 
-deploydocs(repo = "github.com/bowenszhu/SymbolicMultivariateOrthogonalPolynomials.jl.git")
+deploydocs(repo = "github.com/bowenszhu/MOPS.jl.git")

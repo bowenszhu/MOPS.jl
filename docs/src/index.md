@@ -1,1 +1,1 @@
-# SymbolicMultivariateOrthogonalPolynomials.jl
+# MOPS.jl

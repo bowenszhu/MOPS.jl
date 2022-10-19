@@ -1,4 +1,4 @@
-name = "SymbolicMultivariateOrthogonalPolynomials"
+name = "MOPS"
 uuid = "5952859f-f961-4eab-a85d-0fab7a00bdad"
 authors = ["Bowen S. Zhu <bszhu@fas.harvard.edu>"]
 version = "0.1.0"

@@ -1,5 +1,0 @@
-module SymbolicMultivariateOrthogonalPolynomials
-
-using DocStringExtensions
-
-end # module SymbolicMultivariateOrthogonalPolynomials
