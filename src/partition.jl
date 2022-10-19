@@ -72,3 +72,40 @@ false
 function parvalid(κ::AbstractVector)::Bool
     isempty(κ) || (issorted(κ; rev = true) && κ[end] > 0)
 end
+
+"""
+$(TYPEDSIGNATURES)
+
+Return the conjugate partition.
+
+# Examples
+```julia
+┌───┬───┬───┬───┐         ┌───┬───┬───┬───┬───┐
+│   │   │   │   │         │   │   │   │   │   │
+├───┼───┼───┼───┘         ├───┼───┼───┼───┼───┘
+│   │   │   │             │   │   │   │   │
+├───┼───┼───┘        ➔    ├───┼───┼───┴───┘
+│   │   │                 │   │   │
+├───┼───┤                 ├───┼───┘
+│   │   │                 │   │
+├───┼───┘                 └───┘
+│   │
+└───┘
+```
+```jldoctest
+julia> conjugate([4, 3, 2, 2, 1]) |> println
+[5, 4, 2, 1]
+```
+"""
+function conjugate(κ::AbstractVector{T}) where {T}
+    @assert parvalid(κ)
+    if isempty(κ)
+        return similar(κ)
+    end
+    res = zeros(T, κ[1])
+    oneT = one(T)
+    for κᵢ in κ
+        res[1:κᵢ] .+= oneT
+    end
+    res
+end

@@ -22,3 +22,9 @@ end
     @test !parvalid([5, 1, 4])
     @test !parvalid([5, 1, 0])
 end
+
+@testset "conjugate" begin
+    @test conjugate(Int[]) == Int[]
+    @test conjugate([3, 2, 2]) == [3, 3, 1]
+    @test conjugate([7, 5, 3, 3, 2]) == [5, 5, 4, 2, 2, 1, 1]
+end
