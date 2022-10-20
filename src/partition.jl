@@ -109,3 +109,30 @@ function conjugate(κ::AbstractVector{T}) where {T}
     end
     res
 end
+
+"""
+$(TYPEDSIGNATURES)
+
+Compute the leg-length of a partition at a square.
+
+Given the diagram of the partition `κ`, the arm-length of the (`i`, `j`) square `S` is the
+number of squares below `S`.
+
+# Examples
+```julia
+┌───┬───┬───┬───┐
+│   │ S │   │   │
+├───┼───┼───┼───┘
+│   │   │   │
+├───┼───┼───┤
+│   │   │   │
+└───┴───┴───┘
+```
+```jldoctest
+julia> leg([4, 3, 3], 2, 1)
+2
+```
+"""
+function leg(κ::AbstractVector, i::Integer, j::Integer)
+    arm(conjugate(κ), j, i)
+end
