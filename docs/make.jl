@@ -9,4 +9,5 @@ makedocs(sitename = "MOPS.jl",
              "API" => "api.md",
          ])
 
-deploydocs(repo = "github.com/bowenszhu/MOPS.jl.git")
+deploydocs(repo = "github.com/bowenszhu/MOPS.jl.git",
+           push_preview = true)
