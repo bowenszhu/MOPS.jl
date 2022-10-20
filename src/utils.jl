@@ -1,7 +1,7 @@
 using SpecialFunctions: gamma
 
 """
-$(SIGNATURES)
+$(TYPEDSIGNATURES)
 
 Compute the shifted factorial, which is the ratio of two factorials
 ```math
@@ -26,4 +26,28 @@ function sfact(r, k)
     else
         return gamma(r + k) / gamma(r)
     end
+end
+
+"""
+$(TYPEDSIGNATURES)
+
+Compute the generalized shifted factorial.
+
+The generalized shifted factorial extends the definition of factorials to include partition
+parameters. More precisely
+```math
+\\operatorname{gsfact}(α,r,κ)=
+∏_{i=1}^{\\operatorname{length}(κ)}\\operatorname{sfact}\\left(r-\\frac{i-1}{α},κ_i\\right).
+```
+
+See also: [`sfact`](@ref).
+
+# Examples
+```jldoctest
+julia> gsfact(1, 3, [3, 2, 1]) |> Int
+360
+```
+"""
+function gsfact(α, r, κ::AbstractVector)
+    prod(sfact(r - (i - 1) / α, κᵢ) for (i, κᵢ) in enumerate(κ))
 end
