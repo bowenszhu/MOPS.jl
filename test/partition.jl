@@ -28,3 +28,10 @@ end
     @test conjugate([3, 2, 2]) == [3, 3, 1]
     @test conjugate([7, 5, 3, 3, 2]) == [5, 5, 4, 2, 2, 1, 1]
 end
+
+@testset "leg" begin
+    @test leg([4], 2, 1) == 0
+    @test leg([3, 2, 2], 3, 1) == 0
+    @test leg([3, 2, 2], 2, 1) == 2
+    @test leg([3, 2, 2], 2, 2) == 1
+end
