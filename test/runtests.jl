@@ -5,3 +5,4 @@ using SafeTestsets
     Aqua.test_all(MOPS)
 end
 @safetestset "partition" begin include("partition.jl") end
+@safetestset "utils" begin include("utils.jl") end
