@@ -136,3 +136,65 @@ julia> leg([4, 3, 3], 2, 1)
 function leg(κ::AbstractVector, i::Integer, j::Integer)
     arm(conjugate(κ), j, i)
 end
+
+"""
+$(TYPEDSIGNATURES)
+
+Compute the upper hook length of a partition at a square.
+
+Given the parameter `α`, the partition `κ` and the location (`i`, `j`),
+```math
+\\operatorname{uhook}(α,κ,i,j)=\\operatorname{leg}(κ,i,j)+α(1+\\operatorname{arm}(κ,i,j))
+```
+
+See also: [`arm`](@ref), [`leg`](@ref), [`lhook`](@ref).
+
+# Examples
+```julia
+┌───┬───┬───┬───┐
+│   │ S │   │   │
+├───┼───┼───┴───┘
+│   │   │
+├───┼───┘
+│   │
+└───┘
+```
+```jldoctest
+julia> uhook(2, [4, 2, 1], 2, 1)
+7
+```
+"""
+function uhook(α, κ::AbstractVector, i::Integer, j::Integer)
+    leg(κ, i, j) + α * (1 + arm(κ, i, j))
+end
+
+"""
+$(TYPEDSIGNATURES)
+
+Compute the lower hook length of a partition at a square.
+
+Given the parameter `α`, the partition `κ` and the location (`i`, `j`),
+```math
+\\operatorname{lhook}(α,κ,i,j)=\\operatorname{leg}(κ,i,j)+1+α\\operatorname{arm}(κ,i,j)
+```
+
+See also: [`arm`](@ref), [`leg`](@ref), [`uhook`](@ref).
+
+# Examples
+```julia
+┌───┬───┬───┬───┐
+│   │ S │   │   │
+├───┼───┼───┴───┘
+│   │   │
+├───┼───┘
+│   │
+└───┘
+```
+```jldoctest
+julia> lhook(2, [4, 2, 1], 2, 1)
+6
+```
+"""
+function lhook(α, κ::AbstractVector, i::Integer, j::Integer)
+    leg(κ, i, j) + 1 + α * arm(κ, i, j)
+end

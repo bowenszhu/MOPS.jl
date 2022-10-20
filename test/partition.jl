@@ -35,3 +35,13 @@ end
     @test leg([3, 2, 2], 2, 1) == 2
     @test leg([3, 2, 2], 2, 2) == 1
 end
+
+@testset "uhook" begin
+    @test uhook(2, [4, 2, 1], 3, 1) == 4
+    @test uhook(3, [2, 1, 1], 2, 1) == 3
+end
+
+@testset "lhook" begin
+    @test lhook(2, [4, 2, 1], 3, 1) == 3
+    @test lhook(3, [2, 1, 1], 2, 1) == 1
+end
