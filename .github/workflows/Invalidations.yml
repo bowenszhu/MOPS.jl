@@ -1,6 +1,7 @@
 name: Invalidations
 
 on:
+  push:
   pull_request:
 
 concurrency:
