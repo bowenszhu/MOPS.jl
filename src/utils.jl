@@ -21,7 +21,9 @@ julia> sfact(3, 5)
 ```
 """
 function sfact(r, k)
-    if isinteger(k)
+    if k == 0
+        return 1
+    elseif isinteger(k)
         return prod(r + i for i in 0:(Int(k) - 1))
     else
         return gamma(r + k) / gamma(r)

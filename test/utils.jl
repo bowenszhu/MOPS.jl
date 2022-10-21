@@ -1,6 +1,7 @@
 using Test, MOPS, Symbolics
 
 @testset "sfact" begin
+    @test sfact(2, 0) == 1
     @test sfact(3, 5) == 3 * 4 * 5 * 6 * 7
 
     @variables x
