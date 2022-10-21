@@ -198,3 +198,34 @@ julia> lhook(2, [4, 2, 1], 2, 1)
 function lhook(α, κ::AbstractVector, i::Integer, j::Integer)
     leg(κ, i, j) + 1 + α * arm(κ, i, j)
 end
+
+"""
+$(TYPEDSIGNATURES)
+
+Determines if a partition is a subpartition of the other.
+
+Returns `true` if `σ[i] ≤ κ[i]` for all `i`.
+
+# Examples
+```jldoctest
+julia> issubpar([5, 3], [6, 4, 2])
+true
+
+julia> issubpar([5], [4, 1])
+false
+
+julia> issubpar([5, 5, 1], [6, 5])
+false
+```
+"""
+function issubpar(σ::AbstractVector, κ::AbstractVector)
+    if length(σ) > length(κ)
+        return false
+    end
+    for (σᵢ, κᵢ) in zip(σ, κ)
+        if σᵢ > κᵢ
+            return false
+        end
+    end
+    return true
+end

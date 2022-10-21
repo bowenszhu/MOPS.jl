@@ -45,3 +45,10 @@ end
     @test lhook(2, [4, 2, 1], 3, 1) == 3
     @test lhook(3, [2, 1, 1], 2, 1) == 1
 end
+
+@testset "issubpar" begin
+    @test issubpar([5, 5], [6, 5])
+    @test issubpar([4], [4])
+    @test !issubpar([5], [4, 1])
+    @test issubpar([5, 3], [6, 4, 2])
+end
