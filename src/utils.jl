@@ -51,3 +51,23 @@ julia> gsfact(1, 3, [3, 2, 1]) |> Int
 function gsfact(α, r, κ::AbstractVector)
     prod(sfact(r - (i - 1) / α, κᵢ) for (i, κᵢ) in enumerate(κ))
 end
+
+"""
+$(TYPEDSIGNATURES)
+
+The ``ρ`` function of a partition.
+
+Given the Jack parameter (real positive integer) `α` and the partition `κ`,
+```math
+ρ(α,κ)=∑_{i=1}^{\\operatorname{length}(κ)}κ_i\\left(κ_i-1-\\frac{2(i-1)}{α}\\right)
+```
+
+# Examples
+```jldoctest
+julia> rho(2, [3, 1]) |> Int
+5
+```
+"""
+function rho(α, κ::AbstractVector)
+    sum(κᵢ * (κᵢ - 1 - 2 * (i - 1) / α) for (i, κᵢ) in enumerate(κ))
+end

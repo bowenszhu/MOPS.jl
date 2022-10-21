@@ -11,3 +11,8 @@ end
     @test Int(gsfact(1, 3, [3, 2, 1])) == 360
     @test Int(gsfact(2, 2, [4, 2, 2, 1])) == 450
 end
+
+@testset "rho" begin
+    @test rho(2, [3, 1]) == 5
+    @test rho(1, [4, 1, 1]) == 6
+end
