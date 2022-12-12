@@ -21,7 +21,7 @@ end
     @test parvalid([5, 5, 4, 1])
     @test !parvalid([5, 5, 4, -1])
     @test !parvalid([5, 1, 4])
-    @test !parvalid([5, 1, 0])
+    @test parvalid([5, 1, 0])
 end
 
 @testset "conjugate" begin
