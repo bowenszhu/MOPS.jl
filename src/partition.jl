@@ -1,5 +1,3 @@
-using Combinatorics
-
 """
 $(TYPEDSIGNATURES)
 
@@ -7,7 +5,7 @@ Given a positive integer `k`, produce a list of all partitions which sum up to `
 
 # Examples
 ```jldoctest
-julia> par(4)
+julia> MOPS.par(4)
 5-element Vector{Vector{Int64}}:
  [4]
  [3, 1]
@@ -41,7 +39,7 @@ number of squares to the right of `S`, in other words `arm(κ, i, j) = κ[j] - i
 └───┘
 ```
 ```jldoctest
-julia> arm([4, 3, 1, 1], 2, 1)
+julia> MOPS.arm([4, 3, 1, 1], 2, 1)
 2
 ```
 """
@@ -54,23 +52,23 @@ $(TYPEDSIGNATURES)
 
 Check if the given partition is valid.
 
-A partition ``\\kappa`` is a finite, ordered, non-increasing sequence of positive integers
-``\\kappa_1\\geq\\kappa_1\\geq\\kappa_1\\geq\\ldots\\geq\\kappa_l``.
+A partition ``\\kappa`` is a finite, ordered, non-increasing sequence of nonnegative
+integers ``\\kappa_1\\geq\\kappa_1\\geq\\kappa_1\\geq\\ldots\\geq\\kappa_l``.
 
 # Examples
 ```jldoctest
-julia> parvalid(Int[])
+julia> MOPS.parvalid(Int[])
 true
 
-julia> parvalid([4, 3, 1, 1])
+julia> MOPS.parvalid([4, 3, 1, 1])
 true
 
-julia> parvalid([5, 3, 4])
+julia> MOPS.parvalid([5, 3, 4])
 false
 ```
 """
 function parvalid(κ::AbstractVector)::Bool
-    isempty(κ) || (issorted(κ; rev = true) && κ[end] > 0)
+    isempty(κ) || (issorted(κ; rev = true) && κ[end] ≥ 0)
 end
 
 """
@@ -93,7 +91,7 @@ Return the conjugate partition.
 └───┘
 ```
 ```jldoctest
-julia> conjugate([4, 3, 2, 2, 1]) |> println
+julia> MOPS.conjugate([4, 3, 2, 2, 1]) |> println
 [5, 4, 2, 1]
 ```
 """
@@ -129,7 +127,7 @@ number of squares below `S`.
 └───┴───┴───┘
 ```
 ```jldoctest
-julia> leg([4, 3, 3], 2, 1)
+julia> MOPS.leg([4, 3, 3], 2, 1)
 2
 ```
 """
@@ -160,7 +158,7 @@ See also: [`arm`](@ref), [`leg`](@ref), [`lhook`](@ref).
 └───┘
 ```
 ```jldoctest
-julia> uhook(2, [4, 2, 1], 2, 1)
+julia> MOPS.uhook(2, [4, 2, 1], 2, 1)
 7
 ```
 """
@@ -191,7 +189,7 @@ See also: [`arm`](@ref), [`leg`](@ref), [`uhook`](@ref).
 └───┘
 ```
 ```jldoctest
-julia> lhook(2, [4, 2, 1], 2, 1)
+julia> MOPS.lhook(2, [4, 2, 1], 2, 1)
 6
 ```
 """
@@ -208,13 +206,13 @@ Returns `true` if `σ[i] ≤ κ[i]` for all `i`.
 
 # Examples
 ```jldoctest
-julia> issubpar([5, 3], [6, 4, 2])
+julia> MOPS.issubpar([5, 3], [6, 4, 2])
 true
 
-julia> issubpar([5], [4, 1])
+julia> MOPS.issubpar([5], [4, 1])
 false
 
-julia> issubpar([5, 5, 1], [6, 5])
+julia> MOPS.issubpar([5, 5, 1], [6, 5])
 false
 ```
 """

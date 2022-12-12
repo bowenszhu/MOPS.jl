@@ -1,4 +1,5 @@
-using Test, MOPS, Symbolics
+using Test, Symbolics
+using MOPS: par, arm, parvalid, conjugate, leg, uhook, lhook, issubpar
 
 @testset "par negative input" begin
     k = -1

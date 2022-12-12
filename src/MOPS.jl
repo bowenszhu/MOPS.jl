@@ -1,11 +1,15 @@
 module MOPS
 
+using Combinatorics
 using DocStringExtensions
+using LinearAlgebra
+using SpecialFunctions: gamma
+using Symbolics: unwrap
 
 include("partition.jl")
-export par, arm, parvalid, conjugate, leg, uhook, lhook, issubpar
-
 include("utils.jl")
-export sfact, gsfact, rho
+include("jack.jl")
+
+export jack
 
 end # module MOPS

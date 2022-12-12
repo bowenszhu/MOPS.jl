@@ -1,5 +1,3 @@
-using SpecialFunctions: gamma
-
 """
 $(TYPEDSIGNATURES)
 
@@ -16,7 +14,7 @@ The shifted factorial is also known as the Pochhammer symbol and rising factoria
 
 # Examples
 ```jldoctest
-julia> sfact(3, 5)
+julia> MOPS.sfact(3, 5)
 2520
 ```
 """
@@ -44,7 +42,7 @@ See also: [`sfact`](@ref).
 
 # Examples
 ```jldoctest
-julia> gsfact(1, 3, [3, 2, 1]) |> Int
+julia> MOPS.gsfact(1, 3, [3, 2, 1]) |> Int
 360
 ```
 """
@@ -64,10 +62,41 @@ Given the Jack parameter (real positive integer) `α` and the partition `κ`,
 
 # Examples
 ```jldoctest
-julia> rho(2, [3, 1]) |> Int
+julia> MOPS.rho(2, [3, 1]) |> Int
 5
 ```
 """
 function rho(α, κ::AbstractVector)
     sum(κᵢ * (κᵢ - 1 - 2 * (i - 1) / α) for (i, κᵢ) in enumerate(κ))
+end
+
+function ratio(κ::AbstractVector, σ::AbstractVector, k, α)
+    temp = k - α * σ[k]
+    σ2 = conjugate(σ)
+    tempv = map(i -> temp + 1 - i + α * κ[i], 1:k)
+    p1 = prod(@. tempv / (tempv + (α - 1)))
+    tempv = map(i -> temp - i + α * σ[i], 1:(k - 1))
+    p2 = prod(@. (tempv + α) / tempv)
+    tempv = map(i -> σ2[i] - temp - α * i, 1:(σ[k] - 1))
+    p3 = prod(@. (tempv .+ α) / tempv)
+    return α * p1 * p2 * p3
+end
+function ratio2(κ::AbstractVector, σ::AbstractVector, k, α)
+    temp = k - α * σ[k]
+    σ2 = conjugate(σ)
+    tempv = map(i -> temp + 1 - i + α * κ[i], 1:k)
+    p1 = prod(tempv .// (tempv .+ α .- 1))
+    tempv = map(i -> temp - i + α * σ[i], 1:(k - 1))
+    p2 = isone(k) ? 1 : prod((tempv .+ α) .// tempv)
+    tempv = map(i -> σ2[i] - temp - α * i, 1:(σ[k] - 1))
+    p3 = isone(σ[k]) ? 1 : prod((tempv .+ α) .// tempv)
+    return α * p1 * p2 * p3
+end
+
+function compute_size(λ::AbstractVector, μ::AbstractVector)
+    λ1 = λ .+ 1
+    λ1[1] = 1
+    cumprod!(λ1, λ1)
+    reverse!(λ1)
+    return dot(μ, λ1)
 end

@@ -1,4 +1,5 @@
-using Test, MOPS, Symbolics
+using Test, Symbolics
+using MOPS: sfact, gsfact, rho
 
 @testset "sfact" begin
     @test sfact(3, 5) == 3 * 4 * 5 * 6 * 7
